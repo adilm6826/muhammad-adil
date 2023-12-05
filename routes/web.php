@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FormOneController;
+use App\Http\Controllers\FormSecondController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,8 +33,19 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Begin:   Muhammad Adil Task Sub-Task 0.2
-// Route to show the first form
-Route::get('/firstForm',[FormOneController::class,'index'])->name('first-form.show');
-// Post Route for the first form to remove the space
-Route::post('/remove/space',[FormOneController::class,'remove_space'])->name('frist-form.remove-space');
-// Task:    Muhammad Adil Task Sub-Task 0.2
+
+    // Begin: Route for first form
+        // Route to show the first form
+        Route::get('/firstForm',[FormOneController::class,'index'])->name('first-form.show');
+        // Post Route for the first form to remove the space
+        Route::post('/remove/space',[FormOneController::class,'remove_space'])->name('frist-form.remove-space');
+    // End: Route for first form
+
+    // //////////////////////
+    // Begin: Route for second form
+        // Route to show the 2nd form
+        Route::get('/secondForm',[FormSecondController::class,'index'])->name('second-form.show');
+        // Post Route for the 2nd form to coun the words from the given paragraph
+        Route::post('/secondform/words/counts',[FormSecondController::class,'count_words'])->name('second-form.count_words');
+    // End: Route for second form
+// End:    Muhammad Adil Task Sub-Task 0.2

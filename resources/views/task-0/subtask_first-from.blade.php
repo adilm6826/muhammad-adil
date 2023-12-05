@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Techswivel - Task 0 - 0.1</title>
+        <title>Techswivel - Task 0 - 0.2</title>
         <!-- ✅ load jQuery ✅ -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -35,23 +35,28 @@
                         </div>
                     </form>
 
-                    {{-- Display cleaned space of the message --}}
-                    @if (isset($cleanedSpaaceofMessage))
+                    {{-- Display cleaned space of the message if it exists --}}
+                    @if(session('cleanedMessage'))
                         <div class="form-outline mb-4">
-                            {{ $cleanedSpaaceofMessage }}
-                        </div>
-                    @endif 
+                            <b>Orginal Message is: </b><p class="text text-justify">{{ session('originalMessage') }}</p>
+                            <b>Message After Removing Space is: </b><p class="text text-justify">{{ session('cleanedMessage') }}</p>
 
-                    {{-- Display cleaned message before and after --}}
-                    @if (isset($cleanedMessageBeforeAfter))
-                        <div class="form-outline mb-4">
-                            {{ $cleanedMessageBeforeAfter }}
+                            {{-- The word <b>{{session('word')}}</b>: appears <strong>{{ session('wordCount') }}</strong> times in the paragraph.
+                            <p>
+                                <h6>Given Paragraph is:</h6>
+                                {{session('message')}}
+                            </p> --}}
                         </div>
                     @endif
+                    {{-- @if(Session::has('cleanedMessage'))
+                        <div class="form-outline mb-4">
+                            <b>Orginal Message is: </b><p class="text text-justify">{{ Session::get('originalMessage') }}</p>
+                            <b>Message After Removing Space is: </b><p class="text text-justify">{{ Session::get('cleanedMessage') }}</p>
+                        </div>
+                    @endif --}}
                 </div>
             </div>
-        </div>
-       
+        </div>       
 
         {{-- Begin: Script to Validate the form Using Jquery validation --}}
         <script>
