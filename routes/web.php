@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormOneController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Begin:   Muhammad Adil Task Sub-Task 0.2
+// Route to show the first form
+Route::get('/firstForm',[FormOneController::class,'index'])->name('first-form.show');
+// Post Route for the first form to remove the space
+Route::post('/remove/space',[FormOneController::class,'remove_space'])->name('frist-form.remove-space');
+// Task:    Muhammad Adil Task Sub-Task 0.2
